@@ -1,5 +1,8 @@
 /*
- * TODO: Add an appropriate descriptive comment here
+ * Tests for the hasUniqueChars function.
+ * This program runs several test cases using string inputs to verify 
+ * if hasUniqueChars() works correctly. It uses assertions to validate
+ * the function's return values.
  */
 
 #include <stdio.h>    // printf
@@ -42,22 +45,45 @@ int main() {
   strcpy(string3, "This should fail (l and s and i and h)");
   ok = hasUniqueChars(string3);
   assert(!(ok));
+  printf("Test passes\n");
   
   // Test 2: This should be true and not fail, but won't work until you
   // complete the hasUniqueChars() function
   strcpy(string3, "abcdefghij");
   ok = hasUniqueChars(string3);
   assert(ok);
-  
-  // TODO: add your tests here
+  printf("Test passes\n");
 
+  // Test 3: String with space character repeated, which is allowed.
+  strcpy(string3, "a b c d e f g h i j");
+  ok = hasUniqueChars(string3);
+  assert(ok); 
+  printf("Test passes\n");
 
+  // Test 4: A string with mixed-case letters but unique.
+  strcpy(string3, "AbCdEfGhIj");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+  printf("Test passes\n");
+
+  // Test 5: String with a duplicate letter 'a'.
+  strcpy(string3, "abcdefga");
+  ok = hasUniqueChars(string3);
+  assert(!ok);
+  printf("Test passes\n");
+
+  // Test 6: Empty string should be considered as all unique.
+  strcpy(string3, "");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+  printf("Test passes\n");
 
   // NOTE: if you add a \n to any tests, this should cause the
   //       exit failure given. Keep this test last so you can check 
   //       that others pass or fail as you expect them to.
   strcpy(string3, "a b cc\n");
   ok = hasUniqueChars(string3);
+  printf("Test passes\n");
   // other examples that should fail that you can place in strings
   // are \0 or \t or \r
   // See problem description for more details about escape sequences
